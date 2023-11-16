@@ -39,12 +39,11 @@ class Day1 {
             val distance = command.substring(1).toInt()
 
             for (i in 1.. distance) {
-                this.visited.add(move())
+                this.visited.add(move(visited.last()))
             }
         }
 
-        private fun move(): Pair<Int, Int> {
-            val location = visited.last()
+        private fun move(location: Pair<Int, Int>): Pair<Int, Int> {
             return when (this.direction) {
                 Direction.NORTH -> Pair(location.first, location.second + 1)
                 Direction.SOUTH -> Pair(location.first, location.second - 1)
